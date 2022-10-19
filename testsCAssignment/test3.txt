@@ -1,0 +1,25 @@
+
+  //TEST 3 (removeSubtree, nodeDepth, numberLeaves)
+  Node *rootNode, *b, *c, *d, *e, *f, *g, *h, *i, *j, *k, *z; 
+  rootNode = addNode(NULL, 34);
+  b = addNode(rootNode, 53);
+  c = addNode(rootNode, 31);
+  d = addNode(rootNode, 5);
+  e = addNode(rootNode, 2);
+  f = addNode(rootNode, 3);
+  g = addNode(rootNode, 23);
+  h = addNode(rootNode, 1);
+  i = addNode(rootNode, 56);
+  j = addNode(rootNode, 12);
+  k = addNode(rootNode, 91);
+  z = addNode(rootNode, 35);
+
+  assert(numberLeaves(rootNode) == 5); 
+  removeSubtree(rootNode, 5);
+  assert(nodeDepth(rootNode, k) == 3); 
+  assert(c->leftChild == NULL);
+  assert(c->rightChild == NULL);
+  assert(nodeDepth(b, k) == 2); 
+  assert(nodeDepth(i, k) == 1); 
+  assert(removeSubtree(rootNode, 34) == NULL);
+  

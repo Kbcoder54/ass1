@@ -1,0 +1,42 @@
+  //TEST 1 (addNode)
+  Node *rootNode, *b, *c, *d, *e, *f, *g, *h, *i, *j, *k, *z; 
+  rootNode = addNode(NULL, 34);
+  b = addNode(rootNode, 53);
+  c = addNode(rootNode, 31);
+  d = addNode(rootNode, 5);
+  e = addNode(rootNode, 2);
+  f = addNode(rootNode, 3);
+  g = addNode(rootNode, 23);
+  h = addNode(rootNode, 1);
+  i = addNode(rootNode, 56);
+  j = addNode(rootNode, 12);
+  k = addNode(rootNode, 91);
+  z = addNode(rootNode, 35);
+
+
+
+  assert(rootNode->leftChild == b); 
+  assert(rootNode->rightChild == c); 
+  assert(b->leftChild == i); 
+  assert(b->rightChild == z); 
+  assert(c->leftChild == NULL); 
+  assert(c->rightChild == d); 
+  assert(d->leftChild == g); 
+  assert(d->rightChild == e); 
+  assert(e->leftChild == f); 
+  assert(e->rightChild == h); 
+  assert(f->leftChild == NULL); 
+  assert(f->rightChild == NULL); 
+  assert(g->leftChild == NULL); 
+  assert(g->rightChild == j); 
+  assert(h->leftChild == NULL); 
+  assert(h->rightChild == NULL); 
+  assert(i->leftChild == k); 
+  assert(i->rightChild == NULL); 
+  assert(j->leftChild == NULL); 
+  assert(j->rightChild == NULL); 
+  assert(k->leftChild == NULL); 
+  assert(k->rightChild == NULL); 
+  assert(z->leftChild == NULL); 
+  assert(z->rightChild == NULL); 
+

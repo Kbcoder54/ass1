@@ -1,0 +1,64 @@
+
+// TEST 2 (removeNode, displaySubtree)
+
+  Node *rootNode, *b, *c, *d, *e, *f, *g, *h, *i, *j, *k, *z, *zz;
+  rootNode = addNode(NULL, 10);
+  b = addNode(rootNode, 20);
+  c = addNode(rootNode, 5);
+  d = addNode(rootNode, 25);
+  e = addNode(rootNode, 15);
+  f = addNode(rootNode, 30);
+  g = addNode(rootNode, 17);
+  h = addNode(rootNode, 13);
+  i = addNode(rootNode, 7);
+  j = addNode(rootNode, 1);
+  k = addNode(rootNode, 9);
+
+  removeNode(rootNode, 323);
+  displaySubtree(rootNode);
+  printf("\n");
+  removeNode(rootNode, 5); 
+  assert(rootNode->rightChild == i);
+  assert(i->leftChild == k);
+  assert(i->rightChild == j);
+  displaySubtree(rootNode);
+  printf("\n");
+  removeNode(rootNode, 15); 
+  assert(b->rightChild == g);
+  assert(g->rightChild == h);
+  displaySubtree(rootNode);
+  printf("\n");
+  z = removeNode(rootNode, 10); 
+  assert(h->rightChild == i); 
+  displaySubtree(z);
+  printf("\n");
+  removeNode(z, 13);
+  assert(g->rightChild == i); 
+  printf("\n");
+  displaySubtree(z);
+  printf("\n");
+  removeNode(z, 17);
+  assert(b->rightChild == i); 
+  displaySubtree(z);
+  printf("\n");
+  removeNode(z, 7);
+  assert(b->rightChild == k); 
+  assert(k->rightChild == j); 
+  displaySubtree(z);
+  printf("\n");
+  removeNode(z, 25);
+  removeNode(z, 9);
+  assert(b->leftChild == f);
+  assert(b->rightChild == j);
+  displaySubtree(z);
+  printf("\n");
+  zz = removeNode(z,20);
+  assert(f->rightChild == j);
+  assert(f->leftChild == NULL);
+  displaySubtree(zz);
+  printf("\n");
+  removeNode(zz, 1);
+  assert(f->leftChild == NULL);
+  assert(f->rightChild == NULL);
+  displaySubtree(zz);
+
