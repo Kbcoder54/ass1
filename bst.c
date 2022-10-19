@@ -125,7 +125,7 @@ Node* addNode(Node *root, int value){
 
 
 
-    /*Node *p;
+    Node *p;
     if(root == NULL)
         p = newNode(value);
         return newNode(value);
@@ -136,7 +136,7 @@ Node* addNode(Node *root, int value){
     else if(root->value < value)
         root->left = addNode(root->left,value);
 
-    return p;*/
+    return p;
     /*if (root == NULL){
         return newNode(value);
     }
@@ -250,10 +250,18 @@ int numberLeaves(Node * N){
 
 }
 Node * removeSubtree(Node * root, int value){//gives stack error
-    while(root!=NULL){
-        removeSubtree(root->left,root->left->value);
-        removeSubtree(root->right,root->right->value);
-        removeNode(root,root->value);
+    if(root==NULL){
+
+    }
+    else if(value < root -> value){
+        root->right = removeSubtree(root->right,value);
+    }
+    else if(value > root -> value){
+        root->left = removeSubtree(root->left,value);
+    }
+    else{
+        root = NULL;
+        free(root);
     }
     return root;
 
