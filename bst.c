@@ -193,7 +193,7 @@ Node* addNode(Node *root, int value){
 }
 
 Node * removeNode(Node * root, int value){
-    /*if(root == NULL){
+    if(root == NULL){
         return NULL;
     }
     if(value < root->value){
@@ -217,20 +217,20 @@ Node * removeNode(Node * root, int value){
             temp = root->left;
             free(root);
             return temp;
-        }*/
+        }
         /*Node *temp = root -> right;
         while(temp && temp->left!=NULL){
             temp = temp->left;
         }*/
-        /*temp = root -> left;
+        temp = root -> left;
         while(temp && temp->right!=NULL){
             temp = temp->right;
         }
         root -> value = temp->value;
         root -> left = removeNode(root->left,temp->value);
     }
-    return realRoot;*/
-    Node* curr = root;
+    return root;
+    /*Node* curr = root;
     Node* prev = NULL;
     while(curr != NULL && curr->value != value){
         if(value > curr -> value){
@@ -280,7 +280,7 @@ Node * removeNode(Node * root, int value){
         curr -> value = temp -> value;
         free(temp);
     }
-    return realRoot;
+    return realRoot;*/
 }
 
 
@@ -316,7 +316,7 @@ Node * removeSubtree(Node * root, int value){//gives stack error
         root = NULL;
         free(root);
     }
-    return realRoot;
+    return root;
 
 
 
