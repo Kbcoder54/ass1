@@ -55,7 +55,7 @@ int Contains(int value){
 }
 Node* addNode(Node *root, int value){
 
-    /*Node* newnode = newNode(value);
+    Node* newnode = newNode(value);
 
 
     Node* x = root;//NULL
@@ -71,7 +71,7 @@ Node* addNode(Node *root, int value){
             x = x->left;
         }
         else{
-            x = NULL;
+            y = NULL;
             break;
         }
     }
@@ -89,12 +89,13 @@ Node* addNode(Node *root, int value){
         y->right = newnode;
     }
 
-    return newnode;*/
-    Node * temp = newNode(value);
+    return newnode;
+
+    /*Node * temp = newNode(value);
 
 
-   Node * i = root;
-   Node * j = NULL;
+   Node *i = root;
+   Node *j = NULL;
    while(i!=NULL){
         j = i;
        if(i->value > value){
@@ -111,6 +112,7 @@ Node* addNode(Node *root, int value){
 
    if(j==NULL){
       j = temp;
+      realRoot = newNode(value);
    }
    else if(j->value < value){
       j->left = temp;
@@ -119,13 +121,13 @@ Node* addNode(Node *root, int value){
       j->right = temp;
    }
 
-   return temp;
+   return temp;*/
 
 
 
 
 
-    Node *p;
+    /*Node *p;
     if(root == NULL)
         p = newNode(value);
         return newNode(value);
@@ -136,7 +138,7 @@ Node* addNode(Node *root, int value){
     else if(root->value < value)
         root->left = addNode(root->left,value);
 
-    return p;
+    return p;*/
     /*if (root == NULL){
         return newNode(value);
     }
@@ -188,52 +190,52 @@ Node* addNode(Node *root, int value){
         }
     }
     }*/
-
-
-
-
-
 }
 
 Node * removeNode(Node * root, int value){
     if(root == NULL){
-        return root;
+        return NULL;
     }
     if(value<root->value){
-        root = removeNode(root->right,value);
+        root->right = removeNode(root->right,value);
     }
     else if(value > root -> value){
-        root = removeNode(root ->left,value);
+        root->left = removeNode(root ->left,value);
     }
     else{
+        Node* temp = NULL;
+        if(root->left == NULL && root->right == NULL){
+            free(root);
+            return NULL;
+        }
         if(root->left==NULL){
-            Node* temp = root->right;
+            temp = root->right;
             free(root);
             return temp;
         }
         else if(root->right==NULL){
-            Node* temp = root->left;
+            temp = root->left;
             free(root);
             return temp;
         }
-        Node *temp = root -> right;
+        /*Node *temp = root -> right;
         while(temp && temp->left!=NULL){
             temp = temp->left;
+        }*/
+        temp = root -> left;
+        while(temp && temp->right!=NULL){
+            temp = temp->right;
         }
-        root->value = temp -> value;
-        root -> right = removeNode(root->right,temp->value);
+        root -> value = temp -> value;
+        root -> left = removeNode(root->left,temp->value);
     }
     return root;
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
 
 int numberLeaves(Node * N){
     if(N == NULL){
@@ -251,7 +253,7 @@ int numberLeaves(Node * N){
 }
 Node * removeSubtree(Node * root, int value){//gives stack error
     if(root==NULL){
-
+        return NULL;
     }
     else if(value < root -> value){
         root->right = removeSubtree(root->right,value);
